@@ -1,4 +1,4 @@
-# SIMPLIFIED PIPELINE DESIGNER FOR BEGINNERS
+# SIMPLIFIED PIPELINE DESIGNER - FIXED VERSION
 print("="*60)
 print("OIL & GAS PIPELINE DESIGN TRAINING TOOL")
 print("For Young Engineers - No Experience Needed")
@@ -14,9 +14,30 @@ def simple_pipeline_design():
     print("\nSTEP 1: BASIC INFORMATION")
     print("-"*40)
     project_name = input("Project Name (e.g., 'Desert Pipeline'): ")
-    pipeline_length = float(input("Pipeline Length (km, e.g., 25): "))
-    pipe_diameter = float(input("Pipe Diameter (mm, e.g., 200): "))
-    flow_rate = float(input("Flow Rate (m³/hour, e.g., 100): "))
+    if not project_name:
+        project_name = "Unnamed Project"
+    
+    # FIXED: Better input handling
+    while True:
+        try:
+            pipeline_length = float(input("Pipeline Length (km, e.g., 25): "))
+            break
+        except:
+            print("Please enter a number (like 25 or 25.5)")
+    
+    while True:
+        try:
+            pipe_diameter = float(input("Pipe Diameter (mm, e.g., 200): "))
+            break
+        except:
+            print("Please enter a number (like 200 or 150.5)")
+    
+    while True:
+        try:
+            flow_rate = float(input("Flow Rate (m³/hour, e.g., 100): "))
+            break
+        except:
+            print("Please enter a number (like 100 or 85.5)")
     
     print("\nSTEP 2: DESIGN CALCULATIONS")
     print("-"*40)
@@ -107,8 +128,8 @@ def simple_pipeline_design():
     print("="*60)
     
     # Save results
-    save_choice = input("\nSave results to file? (y/n): ")
-    if save_choice.lower() == 'y':
+    save_choice = input("\nSave results to file? (y/n): ").lower().strip()
+    if save_choice == 'y':
         filename = f"{project_name.replace(' ', '_')}_design.txt"
         with open(filename, 'w') as f:
             f.write(f"Pipeline Design Report\n")
@@ -120,16 +141,7 @@ def simple_pipeline_design():
             f.write(f"Pressure Drop: {pressure_drop_bar:.2f} bar\n")
         print(f"Report saved as: {filename}")
     
-    print("\nWould you like to:")
-    print("1. Run another design")
-    print("2. Exit")
-    
-    choice = input("Enter choice (1 or 2): ")
-    if choice == '1':
-        simple_pipeline_design()
-    else:
-        print("\nThank you for using the Pipeline Design Learning Tool!")
-        print("Remember: Always cross-check with ASME B31.4 standards.")
+    input("\nPress Enter to return to main menu...")
 
 def pipeline_crossing_calculator():
     """Special calculator for crossings"""
@@ -143,14 +155,27 @@ def pipeline_crossing_calculator():
     print("3. Railway Crossing")
     print("4. Canal Crossing")
     
-    crossing_type = input("\nSelect crossing type (1-4): ")
+    while True:
+        try:
+            crossing_type = input("\nSelect crossing type (1-4): ")
+            if crossing_type in ['1', '2', '3', '4']:
+                break
+            else:
+                print("Please enter 1, 2, 3, or 4")
+        except:
+            print("Invalid input")
     
     if crossing_type == '1':
         print("\nROAD CROSSING REQUIREMENTS:")
         print("- Minimum burial depth: 1.2 meters")
         print("- Casing pipe required for heavy traffic")
         print("- Warning tape 300mm above pipe")
-        width = float(input("Road width (meters): "))
+        while True:
+            try:
+                width = float(input("Road width (meters): "))
+                break
+            except:
+                print("Please enter a number")
         print(f"\nRecommended: Use {width + 2} meter long casing")
         
     elif crossing_type == '2':
@@ -158,7 +183,12 @@ def pipeline_crossing_calculator():
         print("- Minimum burial depth: 1.5 meters")
         print("- Concrete weight coating may be needed")
         print("- Consider scour protection")
-        width = float(input("Nalla width (meters): "))
+        while True:
+            try:
+                width = float(input("Nalla width (meters): "))
+                break
+            except:
+                print("Please enter a number")
         print(f"\nRecommend: Extra 2m burial depth for scour protection")
         
     elif crossing_type == '3':
@@ -176,36 +206,7 @@ def pipeline_crossing_calculator():
     print("\n" + "="*60)
     print("IMPORTANT: Always check local regulations!")
     print("="*60)
-
-def main_menu():
-    """Main menu for the application"""
-    while True:
-        print("\n" + "="*60)
-        print("MAIN MENU - PIPELINE DESIGN LEARNING TOOL")
-        print("="*60)
-        print("\nChoose what you want to learn:")
-        print("1. Simple Pipeline Design (Start Here!)")
-        print("2. Crossing Calculator")
-        print("3. Wall Thickness Calculator")
-        print("4. Pressure Drop Calculator")
-        print("5. Exit")
-        
-        choice = input("\nEnter your choice (1-5): ")
-        
-        if choice == '1':
-            simple_pipeline_design()
-        elif choice == '2':
-            pipeline_crossing_calculator()
-        elif choice == '3':
-            wall_thickness_calculator()
-        elif choice == '4':
-            pressure_drop_calculator()
-        elif choice == '5':
-            print("\nThank you for learning pipeline design!")
-            print("Always remember: Safety first, calculations second.")
-            break
-        else:
-            print("Please enter 1, 2, 3, 4, or 5")
+    input("\nPress Enter to return to main menu...")
 
 def wall_thickness_calculator():
     """Calculate minimum wall thickness"""
@@ -224,9 +225,31 @@ def wall_thickness_calculator():
     print("CA = Corrosion allowance (mm)")
     
     try:
-        P = float(input("\nDesign Pressure (bar): "))
-        D = float(input("Pipe Diameter (mm): "))
-        S = float(input("Material Strength (MPa) [X42=290, X52=360, X65=450]: ") or "290")
+        while True:
+            try:
+                P = float(input("\nDesign Pressure (bar): "))
+                break
+            except:
+                print("Please enter a number")
+        
+        while True:
+            try:
+                D = float(input("Pipe Diameter (mm): "))
+                break
+            except:
+                print("Please enter a number")
+        
+        while True:
+            try:
+                S_input = input("Material Strength (MPa) [X42=290, X52=360, X65=450]: ")
+                if not S_input:
+                    S = 290.0
+                    break
+                else:
+                    S = float(S_input)
+                    break
+            except:
+                print("Please enter a number or press Enter for default (290)")
         
         # Convert pressure from bar to MPa
         P_mpa = P * 0.1
@@ -237,7 +260,18 @@ def wall_thickness_calculator():
         t_mm = t_calc * 1000
         
         # Add corrosion allowance
-        CA = float(input("Corrosion Allowance (mm, typical 1.5): ") or "1.5")
+        while True:
+            try:
+                CA_input = input("Corrosion Allowance (mm, typical 1.5): ")
+                if not CA_input:
+                    CA = 1.5
+                    break
+                else:
+                    CA = float(CA_input)
+                    break
+            except:
+                print("Please enter a number or press Enter for default (1.5)")
+        
         t_total = t_mm + CA
         
         # Add manufacturing tolerance (12.5%)
@@ -250,16 +284,20 @@ def wall_thickness_calculator():
         
         # Standard thicknesses
         standard = [3.2, 4.0, 4.5, 5.0, 5.6, 6.3, 7.1, 8.0, 9.0, 10.0, 11.0, 12.5]
-        selected = min([t for t in standard if t >= t_final], default=12.5)
+        selected = next((t for t in standard if t >= t_final), 12.5)
         
         print(f"\nSELECT from standard sizes: {selected} mm")
         print(f"Schedule: {get_schedule(selected, D)}")
         
     except:
-        print("Please enter numbers only")
+        print("Error in calculation. Please check inputs.")
+    
+    input("\nPress Enter to return to main menu...")
 
 def get_schedule(thickness, diameter):
     """Get pipe schedule"""
+    if diameter == 0:
+        return "N/A"
     ratio = thickness / diameter * 1000
     if ratio < 5: return "Schedule 20"
     elif ratio < 10: return "Schedule 40"
@@ -275,11 +313,50 @@ def pressure_drop_calculator():
     print("\nUsing Darcy-Weisbach equation for liquids")
     
     try:
-        L = float(input("Pipeline Length (km): "))
-        D = float(input("Pipe Diameter (mm): "))
-        Q = float(input("Flow Rate (m³/hour): "))
-        rho = float(input("Fluid Density (kg/m³) [Oil=850, Water=1000]: ") or "850")
-        mu = float(input("Viscosity (cP) [Crude oil=1-100]: ") or "10")
+        while True:
+            try:
+                L = float(input("Pipeline Length (km): "))
+                break
+            except:
+                print("Please enter a number")
+        
+        while True:
+            try:
+                D = float(input("Pipe Diameter (mm): "))
+                break
+            except:
+                print("Please enter a number")
+        
+        while True:
+            try:
+                Q = float(input("Flow Rate (m³/hour): "))
+                break
+            except:
+                print("Please enter a number")
+        
+        while True:
+            try:
+                rho_input = input("Fluid Density (kg/m³) [Oil=850, Water=1000]: ")
+                if not rho_input:
+                    rho = 850.0
+                    break
+                else:
+                    rho = float(rho_input)
+                    break
+            except:
+                print("Please enter a number or press Enter for default (850)")
+        
+        while True:
+            try:
+                mu_input = input("Viscosity (cP) [Crude oil=1-100]: ")
+                if not mu_input:
+                    mu = 10.0
+                    break
+                else:
+                    mu = float(mu_input)
+                    break
+            except:
+                print("Please enter a number or press Enter for default (10)")
         
         # Convert units
         L_m = L * 1000
@@ -289,6 +366,9 @@ def pressure_drop_calculator():
         
         # Calculate velocity
         A = 3.1416 * (D_m/2) ** 2
+        if A == 0:
+            print("Error: Pipe diameter cannot be zero.")
+            return
         v = Q_m3s / A
         
         # Reynolds number
@@ -313,15 +393,48 @@ def pressure_drop_calculator():
         print(f"Flow Regime: {regime}")
         print(f"Friction Factor: {f:.4f}")
         print(f"Pressure Drop: {deltaP_bar:.2f} bar")
-        print(f"Pressure Drop per km: {deltaP_bar/L:.3f} bar/km")
+        if L > 0:
+            print(f"Pressure Drop per km: {deltaP_bar/L:.3f} bar/km")
         
         # Pump power
         if deltaP_bar > 0:
             power_kw = (Q_m3s * deltaP * 100000) / 1000
             print(f"Pump Power Required: {power_kw:.1f} kW")
         
-    except:
-        print("Please enter valid numbers")
+    except Exception as e:
+        print(f"Error in calculation: {e}")
+    
+    input("\nPress Enter to return to main menu...")
+
+def main_menu():
+    """Main menu for the application"""
+    while True:
+        print("\n" + "="*60)
+        print("MAIN MENU - PIPELINE DESIGN LEARNING TOOL")
+        print("="*60)
+        print("\nChoose what you want to learn:")
+        print("1. Simple Pipeline Design (Start Here!)")
+        print("2. Crossing Calculator")
+        print("3. Wall Thickness Calculator")
+        print("4. Pressure Drop Calculator")
+        print("5. Exit")
+        
+        choice = input("\nEnter your choice (1-5): ").strip()
+        
+        if choice == '1':
+            simple_pipeline_design()
+        elif choice == '2':
+            pipeline_crossing_calculator()
+        elif choice == '3':
+            wall_thickness_calculator()
+        elif choice == '4':
+            pressure_drop_calculator()
+        elif choice == '5':
+            print("\nThank you for learning pipeline design!")
+            print("Always remember: Safety first, calculations second.")
+            break
+        else:
+            print("Please enter 1, 2, 3, 4, or 5")
 
 # Start the application
 if __name__ == "__main__":
