@@ -1,8 +1,34 @@
-# SIMPLIFIED PIPELINE DESIGNER - FIXED VERSION
-print("="*60)
+# SIMPLIFIED PIPELINE DESIGNER - PROFESSIONAL VERSION
+print("="*80)
 print("OIL & GAS PIPELINE DESIGN TRAINING TOOL")
-print("For Young Engineers - No Experience Needed")
-print("="*60)
+print("For Young Engineers - Career Development Tool")
+print("="*80)
+print("\nCreated by: B.C. Prabhakar")
+print("Freelance Oil and Gas Pipeline Engineering Consultant")
+print("Email: prabhubc@gmail.com")
+print("Purpose: Training tool for young pipeline engineers")
+print("="*80)
+
+def display_about():
+    """Display creator information"""
+    print("\n" + "="*80)
+    print("ABOUT THIS TOOL")
+    print("="*80)
+    print("\nCreator: B.C. Prabhakar")
+    print("Title: Freelance Oil and Gas Pipeline Engineering Consultant")
+    print("Experience: [Add your years] years in pipeline engineering")
+    print("Email: prabhubc@gmail.com")
+    print("Location: [Add your location if desired]")
+    print("\nPurpose:")
+    print("- Train young pipeline engineers")
+    print("- Share practical design knowledge")
+    print("- Bridge academic learning with field experience")
+    print("- Promote safe and efficient pipeline design practices")
+    print("\nDisclaimer:")
+    print("This tool is for educational purposes only.")
+    print("Always verify designs with senior engineers and applicable codes.")
+    print("="*80)
+    input("\nPress Enter to return to main menu...")
 
 def simple_pipeline_design():
     """Very simple version for learning"""
@@ -100,9 +126,10 @@ def simple_pipeline_design():
     print("4. Nalla crossings: Minimum 1.2m cover required")
     print("5. Road crossings: Minimum 1.5m cover + casing pipe")
     
-    print("\n" + "="*60)
+    print("\n" + "="*80)
     print("DESIGN SUMMARY FOR: {}".format(project_name))
-    print("="*60)
+    print("Prepared by: B.C. Prabhakar - Pipeline Engineering Consultant")
+    print("="*80)
     print("Pipeline Length: {:.1f} km".format(pipeline_length))
     print("Pipe Diameter: {:.1f} mm ({:.1f} inches)".format(pipe_diameter, diameter_inches))
     print("Flow Rate: {:.1f} m³/hr".format(flow_rate))
@@ -122,10 +149,11 @@ def simple_pipeline_design():
     print("3. Coating: Fusion Bonded Epoxy (FBE)")
     print("4. Testing: Hydrotest at 1.5 x design pressure")
     
-    print("\n" + "="*60)
+    print("\n" + "="*80)
     print("Note: This is a TRAINING TOOL only.")
     print("Always verify with senior engineers and proper standards.")
-    print("="*60)
+    print("For professional consultation, contact: prabhubc@gmail.com")
+    print("="*80)
     
     # Save results
     save_choice = input("\nSave results to file? (y/n): ").lower().strip()
@@ -134,6 +162,9 @@ def simple_pipeline_design():
         with open(filename, 'w') as f:
             f.write(f"Pipeline Design Report\n")
             f.write(f"Project: {project_name}\n")
+            f.write(f"Prepared by: B.C. Prabhakar, Pipeline Engineering Consultant\n")
+            f.write(f"Email: prabhubc@gmail.com\n")
+            f.write(f"Date: {datetime.datetime.now().strftime('%Y-%m-%d')}\n")
             f.write(f"Length: {pipeline_length} km\n")
             f.write(f"Diameter: {pipe_diameter} mm\n")
             f.write(f"Flow Rate: {flow_rate} m³/hr\n")
@@ -145,9 +176,10 @@ def simple_pipeline_design():
 
 def pipeline_crossing_calculator():
     """Special calculator for crossings"""
-    print("\n" + "="*60)
+    print("\n" + "="*80)
     print("PIPELINE CROSSING CALCULATOR")
-    print("="*60)
+    print("Consultant: B.C. Prabhakar")
+    print("="*80)
     
     print("\nTypes of Crossings:")
     print("1. Road Crossing")
@@ -170,6 +202,7 @@ def pipeline_crossing_calculator():
         print("- Minimum burial depth: 1.2 meters")
         print("- Casing pipe required for heavy traffic")
         print("- Warning tape 300mm above pipe")
+        print("- B.C. Prabhakar's Recommendation: Use concrete sleeves for major roads")
         while True:
             try:
                 width = float(input("Road width (meters): "))
@@ -183,6 +216,7 @@ def pipeline_crossing_calculator():
         print("- Minimum burial depth: 1.5 meters")
         print("- Concrete weight coating may be needed")
         print("- Consider scour protection")
+        print("- B.C. Prabhakar's Tip: Add 0.5m extra depth for sandy nallas")
         while True:
             try:
                 width = float(input("Nalla width (meters): "))
@@ -196,23 +230,27 @@ def pipeline_crossing_calculator():
         print("- Minimum burial depth: 1.8 meters")
         print("- Steel casing mandatory")
         print("- Special permits required")
+        print("- B.C. Prabhakar's Advice: Consult railway authority early")
         
     else:
         print("\nCANAL CROSSING REQUIREMENTS:")
         print("- Minimum burial depth: 2.0 meters")
         print("- Heavy weight coating needed")
         print("- Anchor blocks required")
+        print("- B.C. Prabhakar's Recommendation: Consider horizontal directional drilling")
     
-    print("\n" + "="*60)
+    print("\n" + "="*80)
     print("IMPORTANT: Always check local regulations!")
-    print("="*60)
+    print("For professional crossing design, contact: prabhubc@gmail.com")
+    print("="*80)
     input("\nPress Enter to return to main menu...")
 
 def wall_thickness_calculator():
     """Calculate minimum wall thickness"""
-    print("\n" + "="*60)
+    print("\n" + "="*80)
     print("WALL THICKNESS CALCULATOR")
-    print("="*60)
+    print("Based on ASME B31.4 with B.C. Prabhakar's desert modifications")
+    print("="*80)
     
     print("\nBased on ASME B31.4 simplified formula:")
     print("t = (P × D) / (2 × S × F) + CA")
@@ -262,7 +300,7 @@ def wall_thickness_calculator():
         # Add corrosion allowance
         while True:
             try:
-                CA_input = input("Corrosion Allowance (mm, typical 1.5): ")
+                CA_input = input("Corrosion Allowance (mm, typical 1.5 for desert): ")
                 if not CA_input:
                     CA = 1.5
                     break
@@ -289,6 +327,15 @@ def wall_thickness_calculator():
         print(f"\nSELECT from standard sizes: {selected} mm")
         print(f"Schedule: {get_schedule(selected, D)}")
         
+        # Professional recommendation
+        print("\n" + "="*80)
+        print("B.C. Prabhakar's Professional Recommendations:")
+        print("- Desert environments require higher corrosion allowance")
+        print("- Consider external coating: FBE + concrete weight for buried sections")
+        print("- For sour service, use higher grade material")
+        print("- Always include design margin for unexpected conditions")
+        print("="*80)
+        
     except:
         print("Error in calculation. Please check inputs.")
     
@@ -306,9 +353,10 @@ def get_schedule(thickness, diameter):
 
 def pressure_drop_calculator():
     """Calculate pressure drop"""
-    print("\n" + "="*60)
+    print("\n" + "="*80)
     print("PRESSURE DROP CALCULATOR")
-    print("="*60)
+    print("Darcy-Weisbach method with desert application notes")
+    print("="*80)
     
     print("\nUsing Darcy-Weisbach equation for liquids")
     
@@ -401,6 +449,14 @@ def pressure_drop_calculator():
             power_kw = (Q_m3s * deltaP * 100000) / 1000
             print(f"Pump Power Required: {power_kw:.1f} kW")
         
+        # Professional notes
+        print("\n" + "="*80)
+        print("B.C. Prabhakar's Professional Notes:")
+        print(f"- For {L} km pipeline, consider booster stations if ΔP > {deltaP_bar * 0.7:.1f} bar")
+        print(f"- Velocity {v:.2f} m/s is {'acceptable' if v < 3 else 'high - consider larger pipe'}")
+        print(f"- For desert, add 10-15% margin for temperature effects")
+        print("="*80)
+        
     except Exception as e:
         print(f"Error in calculation: {e}")
     
@@ -409,17 +465,20 @@ def pressure_drop_calculator():
 def main_menu():
     """Main menu for the application"""
     while True:
-        print("\n" + "="*60)
+        print("\n" + "="*80)
         print("MAIN MENU - PIPELINE DESIGN LEARNING TOOL")
-        print("="*60)
+        print("Created by: B.C. Prabhakar - Pipeline Engineering Consultant")
+        print("Email: prabhubc@gmail.com")
+        print("="*80)
         print("\nChoose what you want to learn:")
         print("1. Simple Pipeline Design (Start Here!)")
         print("2. Crossing Calculator")
         print("3. Wall Thickness Calculator")
         print("4. Pressure Drop Calculator")
-        print("5. Exit")
+        print("5. About Creator & Tool")
+        print("6. Exit")
         
-        choice = input("\nEnter your choice (1-5): ").strip()
+        choice = input("\nEnter your choice (1-6): ").strip()
         
         if choice == '1':
             simple_pipeline_design()
@@ -430,13 +489,23 @@ def main_menu():
         elif choice == '4':
             pressure_drop_calculator()
         elif choice == '5':
+            display_about()
+        elif choice == '6':
             print("\nThank you for learning pipeline design!")
-            print("Always remember: Safety first, calculations second.")
+            print("Remember: Safety first, calculations second.")
+            print("\nFor professional consultation:")
+            print("B.C. Prabhakar")
+            print("Freelance Oil and Gas Pipeline Engineering Consultant")
+            print("Email: prabhubc@gmail.com")
+            print("\nAlways verify with applicable codes and senior engineers.")
             break
         else:
-            print("Please enter 1, 2, 3, 4, or 5")
+            print("Please enter 1, 2, 3, 4, 5, or 6")
+
+# Import datetime for reports
+import datetime
 
 # Start the application
 if __name__ == "__main__":
-    print("\nLoading Pipeline Design Learning Tool...")
+    print("\nLoading Pipeline Design Professional Learning Tool...")
     main_menu()
